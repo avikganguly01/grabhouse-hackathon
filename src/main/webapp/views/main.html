@@ -1,4 +1,6 @@
 <div class="tab-pane" id="tab1" ng-controller="HomeController" >
-			<div id="map"></div>
-			
+			<!-- <div id="map"></div> -->
+			<map center="12.9606139,77.5945543" zoom="11">
+			  <marker ng-repeat="pos in position" position="{{pos.lat}}, {{pos.lng}}"></marker>
+			</map>
 </div>

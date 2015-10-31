@@ -22,14 +22,32 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#main">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li>
+              <label class="col-sm-2" for="explore">Explore City<span class="required">*</span></label>
+              <div class="col-sm-8">
+                  <select id="explore" name="explore"
+                          class="form-control" style="margin-left:30px;">
+                          <option value="bangalore">Bangalore</option>
+                  </select>
+               </div>
+	      </li>
+	      <li>
+              <label class="col-sm-2" for="native" style="margin-left:20px;">Native State<span class="required">*</span></label>
+              <div class="col-sm-8">
+                  <select id="native" name="native"
+                          class="form-control" style="margin-left:20px;">
+                          <option value="westbengal">West Bengal</option>
+                  </select>
+               </div>
+	      </li>
+	      <li ng-controller="MainController">
+              <label class="col-sm-2" for="work" >Work Lat/Lng<span class="required">*</span></label>
+              <div class="col-sm-8" style="margin-left:20px; margin-top:5px;">
+                  <input id="worklatlng" name="worklatlng" type="text" ng-model="latlng"
+                  ng-change="changeLatLng()"/>
+               </div>
+	      </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Logout</a></li>
       </ul>
@@ -56,6 +74,7 @@
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
 	
   </body>
 </html>

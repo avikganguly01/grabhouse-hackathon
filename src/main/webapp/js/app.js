@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['ngRoute', 'restangular', 'angularFileUpload', 'myApp.services', 'myApp.controllers']).
+angular.module('myApp', ['ngRoute', 'restangular', 'ngMap', 'angularFileUpload', 'myApp.services', 'myApp.controllers']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/main', {templateUrl: 'views/main.html'});
 	$routeProvider.otherwise({redirectTo: '/main'});
