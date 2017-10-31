@@ -23,4 +23,5 @@ rebel.xml
 *~
 .metadata
 /bin/
+!gradle/wrapper/gradle-wrapper.jar
 /src/main/webapp/bower_components/
