@@ -1,0 +1,170 @@
+swagger: '2.0'
+info:
+  description: Login API
+  title: Login API
+  version: 1.0.0
+  contact:
+    email: avikganguly010@gmail.com
+tags:
+  - name: developers
+    description: Operations available to regular developers
+paths:
+  /login:
+    post:
+      summary: Logs a user in using Firebase token
+      description: Logs a user in using Firebase token
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: firebaseUserId
+          description: Firebase profile to add
+          schema:
+            type: object
+            required:
+              - firebaseUserId
+            properties:
+              firebaseUserId:
+                type: string
+                example: abcd123
+      responses:
+        '200':
+          description: Session created
+          schema:
+            type: object
+            properties:
+              resourceId:
+                type: integer
+                description: The user ID.
+        '400':
+          description: 'invalid input, object invalid'
+  /rooms:
+    get:
+      tags:
+        - developers
+      summary: Fetches all nearby hosts based on latitutde and longitude.
+      description: Fetches all nearby hosts based on latitutde, longitude, offset, limit, search, date, time and service.
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: lat
+          type: string
+          description: >-
+            Latitude of request location
+        - in: query
+          name: lng
+          type: string
+          description: >-
+            Longitude of request location
+        - in: query
+          name: offset
+          type: integer
+          description: >-
+            Pagination Param
+        - in: query
+          name: limit
+          type: integer
+          description: >-
+            Pagination Param
+        - in: query
+          name: search
+          type: string
+          description: >-
+            Search by jamroom name (returns results 1 character edit away)
+        - in: query
+          name: date
+          type: string
+          description: >-
+            Date string in ddMMMyyyy format
+        - in: query
+          name: time
+          type: integer
+          description: >-
+            ID from timeRange code options
+        - in: query
+          name: service
+          type: integer
+          description: >-
+            ID from roomService code options
+            
+      responses:
+        '200':
+          description: Available jam locations as per query params are returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/room'
+        '400':
+          description: 'invalid input, object invalid'
+definitions:
+  room:
+    type: object
+    required:
+      - roomId
+      - studioName
+      - roomName
+      - area
+      - overallAverage
+      - avgHourly
+      - avgRecordingHourly
+      - avgMixingMasteringHourly
+      - hasJamming
+      - hasRecording
+      - hasMixingAndMastering
+      - avgRating
+      - primaryImageId
+    properties:
+      roomId:
+        type: integer
+        format: int32
+        example: 234
+      studioName:
+        type: string
+        example: Music Beatz
+      roomName:
+        type: string
+        example: Alpha
+      area:
+        type: string
+        example: Koramangala
+      overallAverage:
+        type: integer
+        format: int32
+        example: 550
+      avgHourly:
+        type: integer
+        format: int32
+        example: 550
+      avgRecordingHourly:
+        type: integer
+        format: int32
+        example: 400
+      avgMixingMasteringHourly:
+        type: integer
+        format: int32
+        example: 400
+      hasJamming:
+        type: boolean
+      hasRecording:
+        type: boolean
+      hasMixingAndMastering:
+        type: boolean
+      avgRating:
+        type: number
+        example: 4.3
+      primaryImageId:
+        type: integer
+        format: int32
+        example: 35
+      
+      
+          
+
+host: 'jammate.in'
+basePath: /beatnik-core/
+schemes:
+  - http
+  
